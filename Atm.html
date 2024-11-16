@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Atm Interface</title>
+</head>
+<body>
+	 <h1>ATM Machine</h1>
+    <form action="ATM" method="post">
+        <label for="action">Select Action:</label>
+        <select name="action" id="action">
+            <option value="withdraw">Withdraw</option>
+            <option value="deposit">Deposit</option>
+            <option value="checkBalance">Check Balance</option>
+        </select>
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" id="amount" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

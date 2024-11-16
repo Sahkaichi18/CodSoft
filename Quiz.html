@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1">
+  <title>MCQ Based Application</title>
+  <style>
+    #timer {
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>MCQ Based Application</h1>
+  <form id="quizForm" action="QuizServlet" method="post">
+    <div id="question1" class="question">
+      <p>Which of the following is the national flower of India?</p>
+      <input type="radio" name="q1" value="0" /> Rose<br>
+      <input type="radio" name="q1" value="0" /> Sunflower<br>
+      <input type="radio" name="q1" value="10" /> Lotus<br>
+    </div>
+    
+    <div id="question2" class="question">
+      <p>Which of the following is the capital of India?</p>
+      <input type="radio" name="q2" value="0" /> Maharashtra<br>
+      <input type="radio" name="q2" value="10" /> Delhi<br>
+      <input type="radio" name="q2" value="0" /> Kerala<br>
+    </div>
+    
+    <div id="question3" class="question">
+      <p>Which of the following is the national animal of India?</p>
+      <input type="radio" name="q3" value="10" /> Tiger<br>
+      <input type="radio" name="q3" value="0" /> Lion<br>
+      <input type="radio" name="q3" value="0" /> Leopard<br>
+    </div>
+
+    <div id="question4" class="question">
+      <p>Which of the following is the national bird of India?</p>
+      <input type="radio" name="q4" value="0" /> Sparrow<br>
+      <input type="radio" name="q4" value="0" /> Crow<br>
+      <input type="radio" name="q4" value="10" /> Peacock<br>
+    </div>
+
+    <input type="submit" value="Submit Quiz" id="submitButton">
+  </form>
+
+  <div id="timer">Time left: 5:00</div>
+
+  <script>
+    const timerDisplay = document.getElementById('timer');
+    const submitButton = document.getElementById('submitButton');
+    const quizForm = document.getElementById('quizForm');
+    let totalTimeLeft = 300; // 5 minutes in seconds
+
+    // Update the timer display
+    function updateTimer() {
+      const minutes = Math.floor(totalTimeLeft / 60);
+      const seconds = totalTimeLeft % 60;
+      timerDisplay.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+      
+      if (totalTimeLeft <= 0) {
+        alert("Time is up! Submitting your quiz.");
+        quizForm.submit(); // Automatically submit the form
+      } else {
+        totalTimeLeft--;
+        setTimeout(updateTimer, 1000);
+      }
+    }
+
+    // Start the timer when the page loads
+    updateTimer();
+  </script>
+</body>
+</html>
